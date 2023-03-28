@@ -49,7 +49,6 @@ public class TrackScroller : MonoBehaviour
             case ETrackType.Playing:
                 if (transform.localPosition.x < -width)
                 {
-                    Debug.Log("cok");
                     Vector2 resetPosition = new Vector2(-9.611f, 0);
                     transform.localPosition = resetPosition;
                 }
