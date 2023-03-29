@@ -8,12 +8,12 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Tracks
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - GroundCol
   - 
   - 
   - 

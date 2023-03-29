@@ -17,8 +17,6 @@ public class TrackScroller : MonoBehaviour
     private BoxCollider2D _collider;
     private Rigidbody2D _rb;
 
-    bool hasPassedStart;
-
     private float width;
     [SerializeField]
     private float scrollSpeed = -2f;
@@ -30,7 +28,6 @@ public class TrackScroller : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
 
         width = _collider.size.x;
-        _collider.enabled = false;
 
         _rb.velocity = new Vector2(scrollSpeed, 0);
     }
@@ -45,12 +42,16 @@ public class TrackScroller : MonoBehaviour
                 {
                     Destroy(this.gameObject);
                 }
+                else if (transform.position.x < -9)
+                {
+                    GameObject.Find("Player").GetComponent<PlayerController>().hasStarted = true;
+                }
                 break;
             case ETrackType.Playing:
-                if (transform.localPosition.x < -width)
+                if (transform.position.x < -width)
                 {
-                    Vector2 resetPosition = new Vector2(-9.611f, 0);
-                    transform.localPosition = resetPosition;
+                    Vector2 resetPosition = new Vector2(width * 2f, 0);
+                    transform.position = (Vector2)transform.position + resetPosition;
                 }
                 break;
         }
