@@ -47,9 +47,9 @@ public class PlayerController : MonoBehaviour
 
         // Get the players inputs (W or S) decide wether to move up or down.
         // #TO IMPROVE ON THIS ADD INPUTS IN THE GAMECONTROLLER AND A SETTINGS MENU TO CHANGE SAID INPUTS
-        if (Input.GetKeyDown(KeyCode.W) && hasStarted)
+        if (Input.GetKeyDown(KeyCode.W) && hasStarted && isGrounded)
             MoveTrack(-1);
-        else if (Input.GetKeyDown(KeyCode.S) && hasStarted)
+        else if (Input.GetKeyDown(KeyCode.S) && hasStarted && isGrounded)
             MoveTrack(1);
         else if (Input.GetKeyDown(KeyCode.Space) && hasStarted && isGrounded && jumpCooldownTimer < 0)
         {

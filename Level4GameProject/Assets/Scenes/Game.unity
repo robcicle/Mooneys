@@ -2645,7 +2645,7 @@ MonoBehaviour:
   - {fileID: 311613158}
   - {fileID: 1550893428}
   - {fileID: 507306881}
-  jumpForce: 6
+  jumpForce: 5
   jumpCooldown: 1.5
   groundLayer:
     serializedVersion: 2
