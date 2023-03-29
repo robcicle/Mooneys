@@ -2528,7 +2528,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2536,6 +2536,90 @@ TextureImporter:
       bones: []
       spriteID: a198be4827ce9874da234d48c56d9a8d
       internalID: -1740237195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: asset_sheet1_116
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 288
+        width: 144
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c14fc2b8263fc340bcf78124747a888
+      internalID: -326423188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: asset_sheet1_117
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 192
+        width: 144
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: faee40c11a31a084987e8f7f3ddac097
+      internalID: 969933924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: asset_sheet1_118
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 96
+        width: 144
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e293894e7efa744eb9b8bf5ce816edd
+      internalID: -115454278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: asset_sheet1_119
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cffddcafe8f0c52439c6beda9f9b5afb
+      internalID: 1556481612
       vertices: []
       indices: 
       edges: []
@@ -2571,6 +2655,10 @@ TextureImporter:
       asset_sheet1_113: -1374562584
       asset_sheet1_114: 476828509
       asset_sheet1_115: -1740237195
+      asset_sheet1_116: -326423188
+      asset_sheet1_117: 969933924
+      asset_sheet1_118: -115454278
+      asset_sheet1_119: 1556481612
       asset_sheet1_12: -46359089
       asset_sheet1_13: -1716453058
       asset_sheet1_14: -1503779113

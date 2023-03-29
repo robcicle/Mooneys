@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     LayerMask groundLayer;
 
+    [SerializeField]
+    Animator animator;
 
     // PLAYER VALUES
     [SerializeField]
@@ -42,6 +44,9 @@ public class PlayerController : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapArea(new Vector2(transform.position.x, transform.position.y),
             new Vector2(transform.position.x + 0.5f, transform.position.y + 0.5f), groundLayer);
+
+        animator.SetBool("isGrounded", isGrounded);
+        animator.SetInteger("playerHealth", playerHealth);
 
         jumpCooldownTimer -= Time.deltaTime;
 
@@ -71,7 +76,7 @@ public class PlayerController : MonoBehaviour
     public void Hit()
     {
         playerHealth -= 1;
-        Debug.Log("WAH");
+        animator.SetTrigger("takeDamage");
         Debug.Log("HIT: HEALTH - " + playerHealth);
     }
 

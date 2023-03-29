@@ -29,8 +29,13 @@ public class UI_Management : MonoBehaviour
             }
     }
 
-    public void ExitGame()
+    public void Menu()
     {
         _gameController.ChangeState(GameController.EGameState.MainMenu);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }
