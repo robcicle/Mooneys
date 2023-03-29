@@ -19,7 +19,7 @@ public class TrackScroller : MonoBehaviour
 
     private float width;
     [SerializeField]
-    private float scrollSpeed = -2f;
+    private float scrollSpeed = -4f;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +45,7 @@ public class TrackScroller : MonoBehaviour
                 else if (transform.position.x < -9)
                 {
                     GameObject.Find("Player").GetComponent<PlayerController>().hasStarted = true;
+                    GameObject.Find("Entities").GetComponent<EntitySpawner>().hasStarted = true;
                 }
                 break;
             case ETrackType.Playing:
