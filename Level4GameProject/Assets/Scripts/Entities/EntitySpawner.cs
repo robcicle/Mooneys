@@ -41,14 +41,14 @@ public class EntitySpawner : MonoBehaviour
             {
                 float randomNumber = Random.Range(1f, 100f);
 
-                if (randomNumber <= 20 && curEnemyCount < 2)
+                if (randomNumber <= 30 && curEnemyCount < 2) // (30%)
                 {
                     // SPAWN ENEMY
                     curEnemyCount += 1;
                     Debug.Log("ENEMY");
                     Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPoints[i]);
                 }
-                else if (randomNumber > 20 && randomNumber <= 60)
+                else if (randomNumber > 30 && randomNumber <= 60) // (30%)
                 {
                     float coinRandomNumber = Random.Range(1f, 100f);
 
@@ -74,7 +74,7 @@ public class EntitySpawner : MonoBehaviour
                     }
                     
                 }
-                else if (randomNumber > 60 && randomNumber <= 65)
+                else if (randomNumber > 60 && randomNumber <= 65) // (5%)
                 {
                     // SPAWN SPANNER
                     Instantiate(fixPrefab, spawnPoints[i]);

@@ -5,10 +5,15 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // PLAYER MOVEMENT
+    [HideInInspector]
     public bool hasStarted = false;
 
     [SerializeField]
     private Transform[] trackYPos;
+    [SerializeField]
+    LayerMask groundLayer;
+    [SerializeField]
+    Animator animator;
 
     private Rigidbody2D _rb;
     private int playerCurrTrack = 1;
@@ -21,22 +26,20 @@ public class PlayerController : MonoBehaviour
 
     float jumpCooldownTimer;
 
-    [SerializeField]
-    LayerMask groundLayer;
-
-    [SerializeField]
-    Animator animator;
-
     // PLAYER VALUES
     [SerializeField]
     int playerHealth = 4;
     int playerScore = 0;
+
+    [SerializeField]
+    UI_Health uiHealth;
 
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         jumpCooldownTimer = jumpCooldown;
+        uiHealth.UpdateHealthUI(playerHealth);
     }
 
     // Update is called once per frame
@@ -77,13 +80,13 @@ public class PlayerController : MonoBehaviour
     {
         playerHealth -= 1;
         animator.SetTrigger("takeDamage");
-        Debug.Log("HIT: HEALTH - " + playerHealth);
+        uiHealth.UpdateHealthUI(playerHealth);
     }
 
     public void Fix()
     {
         playerHealth += 1;
-        Debug.Log("FIX: HEALTH - " + playerHealth);
+        uiHealth.UpdateHealthUI(playerHealth);
     }
 
     public void Score(int amount)
