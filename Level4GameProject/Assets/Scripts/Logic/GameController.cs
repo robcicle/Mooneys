@@ -18,6 +18,8 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private EGameState _eGameState = EGameState.MainMenu;
 
+    int _prevScore = 0;
+
     private void Awake()
     {
         // Assert if there isn't already a controller.
@@ -113,6 +115,15 @@ public class GameController : MonoBehaviour
                     SceneManager.UnloadSceneAsync("Game");
                     SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
                 }
+                else if (_eGameState == EGameState.GameOver)
+                {
+                    SceneManager.UnloadSceneAsync("GameOver");
+                    SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
+                }
+                else
+                {
+                    SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
+                }
                 Time.timeScale = 0.0f;
                 break;
             /////////////////////////////////////////////
@@ -121,6 +132,11 @@ public class GameController : MonoBehaviour
                 if (_eGameState == EGameState.MainMenu)
                 {
                     SceneManager.UnloadSceneAsync("MainMenu");
+                    RestartGame();
+                }
+                else if (_eGameState == EGameState.GameOver)
+                {
+                    SceneManager.UnloadSceneAsync("GameOver");
                     RestartGame();
                 }
                 Time.timeScale = 1.0f;
@@ -133,6 +149,11 @@ public class GameController : MonoBehaviour
             /////////////////////////////////////////////
             // Game is over
             case EGameState.GameOver:
+                if (_eGameState == EGameState.Playing || _eGameState == EGameState.Paused)
+                {
+                    SceneManager.UnloadSceneAsync("Game");
+                    SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
+                }
                 Time.timeScale = 0.0f;
                 break;
             /////////////////////////////////////////////
@@ -171,5 +192,15 @@ public class GameController : MonoBehaviour
             return true;
         else
             return false;
+    }
+
+    public void SetPrevScore(int prevScore)
+    {
+        _prevScore = prevScore;
+    }
+
+    public int GetPrevScore()
+    {
+        return _prevScore;
     }
 }

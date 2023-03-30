@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_Health : MonoBehaviour
+public class UI_Game : MonoBehaviour
 {
 	[SerializeField]
 	private Sprite FourWheel;
@@ -18,6 +19,11 @@ public class UI_Health : MonoBehaviour
 
 	[SerializeField]
 	private Image playerHealthUI;
+
+	[SerializeField]
+	private TextMeshProUGUI playerScoreText;
+	[SerializeField]
+	private string playerScoreString = "SCORE: ";
 	
     public void UpdateHealthUI(int playerHealth)
 	{
@@ -42,4 +48,9 @@ public class UI_Health : MonoBehaviour
             playerHealthUI.sprite = NoWheel;
         }
     }
+
+	public void UpdateScoreUI(int playerScore)
+	{
+		playerScoreText.text = playerScoreString + playerScore;
+	}
 }

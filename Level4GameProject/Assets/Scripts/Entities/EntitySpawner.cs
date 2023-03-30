@@ -45,7 +45,6 @@ public class EntitySpawner : MonoBehaviour
                 {
                     // SPAWN ENEMY
                     curEnemyCount += 1;
-                    Debug.Log("ENEMY");
                     Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPoints[i]);
                 }
                 else if (randomNumber > 30 && randomNumber <= 60) // (30%)

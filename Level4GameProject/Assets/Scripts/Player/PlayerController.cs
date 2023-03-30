@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Transactions;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -32,14 +33,16 @@ public class PlayerController : MonoBehaviour
     int playerScore = 0;
 
     [SerializeField]
-    UI_Health uiHealth;
+    UI_Game uiGame;
+
+    bool isDead = false;
 
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         jumpCooldownTimer = jumpCooldown;
-        uiHealth.UpdateHealthUI(playerHealth);
+        uiGame.UpdateHealthUI(playerHealth);
     }
 
     // Update is called once per frame
@@ -55,14 +58,29 @@ public class PlayerController : MonoBehaviour
 
         // Get the players inputs (W or S) decide wether to move up or down.
         // #TO IMPROVE ON THIS ADD INPUTS IN THE GAMECONTROLLER AND A SETTINGS MENU TO CHANGE SAID INPUTS
-        if (Input.GetKeyDown(KeyCode.W) && hasStarted && isGrounded)
+        if (Input.GetKeyDown(KeyCode.W) && hasStarted && isGrounded && !isDead)
             MoveTrack(-1);
-        else if (Input.GetKeyDown(KeyCode.S) && hasStarted && isGrounded)
+        else if (Input.GetKeyDown(KeyCode.S) && hasStarted && isGrounded && !isDead)
             MoveTrack(1);
-        else if (Input.GetKeyDown(KeyCode.Space) && hasStarted && isGrounded && jumpCooldownTimer < 0)
+        else if (Input.GetKeyDown(KeyCode.Space) && hasStarted && isGrounded && jumpCooldownTimer < 0 && !isDead)
         {
             jumpCooldownTimer = jumpCooldown;
             _rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        }
+
+        if (isDead)
+        {
+            
+            if (Time.timeScale > 0.1)
+            {
+                Time.timeScale -= Time.unscaledDeltaTime / 3.5f;
+            }
+            else
+            {
+                GameController gameController = GameObject.Find("GameManager").GetComponent<GameController>();
+                gameController.SetPrevScore(playerScore);
+                gameController.ChangeState(GameController.EGameState.GameOver);
+            }
         }
     }
 
@@ -79,19 +97,24 @@ public class PlayerController : MonoBehaviour
     public void Hit()
     {
         playerHealth -= 1;
+        if (playerHealth <= 0)
+        {
+            isDead = true;
+        }
         animator.SetTrigger("takeDamage");
-        uiHealth.UpdateHealthUI(playerHealth);
+        uiGame.UpdateHealthUI(playerHealth);
     }
 
     public void Fix()
     {
-        playerHealth += 1;
-        uiHealth.UpdateHealthUI(playerHealth);
+        if (playerHealth < 4)
+            playerHealth += 1;
+        uiGame.UpdateHealthUI(playerHealth);
     }
 
     public void Score(int amount)
     {
         playerScore += amount;
-        Debug.Log("SCORE - " + playerScore);
+        uiGame.UpdateScoreUI(playerScore);
     }
 }
