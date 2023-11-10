@@ -26,10 +26,12 @@ public class PlayerController : MonoBehaviour
     bool isGrounded = false;
 
     float jumpCooldownTimer;
+    [Header("Yo")]
 
     // PLAYER VALUES
     [SerializeField]
     int playerHealth = 4;
+    [Range(0.0f, 100.0f), SerializeField, Tooltip("This messsage sucks mad cock")]
     int playerScore = 0;
 
     [SerializeField]
