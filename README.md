@@ -1,7 +1,7 @@
 # Mooneys Cave Crusade
 
 ARCHIVED: 07/03/25
-This archive date is close to two years after the actual abandonment of the project.
+This archive date is close to two years after the actual completion of the project.
 
 Try out the final build at [robcicle.dev](https://robcicle.dev/games/mooneys)
 
